@@ -4,6 +4,9 @@ repository histories by treating the history as a directed acyclic
 network. So it's "directed acyclic networks for git", but you can
 still pronounce it "dangit".
 
+It's also meant to visualize explicit and implicit dependency graphs
+among git commits, whether you want to modify them or not.
+
 Git has a linear commit history: every commit can, in theory, depend
 on changes made by every preceding commit, and there is absolutely no
 infrastructure reflecting that that's actually a rare special
@@ -19,6 +22,9 @@ not to apply commit B without first applying commit A. In theory, if I
 choose any sequence of all commits such that commit A never comes
 after commit B (for all edges), it should apply in that order, and not
 give me diff conflicts.
+
+It would also be great if the result wouldn't depend on which of those
+orders I choose.
 
 Quite often, this directed acyclic network is both a directed acyclic
 graph and a tree, and we'll represent it as such:
@@ -126,3 +132,19 @@ it'll find the previous commit and apply the fixup.
 
 It's meant to be useful in practice for actual git repositories, not
 to be perfect in theory.
+
+Dangit requires a git repository; ideally, a copy of an existing
+repository that is safe to work on and potentially destroy. It also
+requires an author id and a base commit.
+
+This is barely a proof of concept at this point. It's just about good
+enough to tidy the dangit repository itself. TODO items include:
+
+1. argument passing
+2. reliability
+3. handle mixed annotated/non-annotated commits
+4. option to store notes using git-notes rather than in commit messages
+5. handle block moves better
+6. tooltips for file names etc.
+7. performance
+8. missing features
