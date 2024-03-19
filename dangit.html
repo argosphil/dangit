@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dangit!</title>
+    <link rel="stylesheet" href="dangit.css" type="text/css"/>
+    <script src="dangit.js" type="application/javascript"></script>
+    <script src="client.js" type="application/javascript"></script>
+  </head>
+  <body>
+    <div style="position: fixed; width: 100%; height: 100%; overflow: scroll">
+      <div style="min-height:2em"></div>
+      <div id="ui" style="position: relative; display: inline-block; overflow: scroll; height: 50%; width: 100%" tabindex="0">
+        <div style="position: relative; width: 5000px; height: 50000px; overflow: scroll">
+          <svg id="svg" style="position: absolute" width="5000px" height="50000px"></svg>
+          <div id="itree" style="position: absolute"></div>
+        </div>
+      </div>
+      <div id="diffpane" style="position: relative; width: 49%; height: 50%; overflow: scroll; display: inline-block">
+        <h3 id="heading-diff">Diff</h3>
+        <div id="diff">
+        </div>
+      </div>
+      <div style="position: relative; width: 49%; height: 50%; overflow: scroll; display: inline-block">
+        <div id="heading-metadata" style="display: inline-block; width: fit-content">Metadata</div>
+	<div id="buttons-metadata" style="display: inline-block; float: right"></div>
+        <div id="metadata">
+        </div>
+      </div>
+    </div>
+    <nav style="position: fixed; top: 0; width: 100%; display: block; overflow: scroll">
+      <button onclick="action_import()">Import</button>
+      <button onclick="action_import('raw')">Raw Import</button>
+      <button onclick="action_export()">Export</button>
+      <input id="loop" type="checkbox"/>
+      <label for="loop">loop</label>
+      <input id="follow" type="checkbox"/>
+      <label for="follow">follow</label>
+      <span style="display:inline-block; right:0; float: right">
+	<div style="display: inline-block" id="total-depth"></div> dependencies
+      </span>
+      <span style="display:inline-block; right:0; float: right; border: 1px solid white;">
+	<div style="display: inline-block" id="total-selected"></div>
+      </span>
+      <span style="display: inline-block; right: 0; float: right">
+	<div style="display: inline-block" id="status-light"></div>
+      </span>
+    </nav>
+    <div id="dumbbar" style="position: fixed; left: 0px; bottom: 0; width: 200%; min-height: 1em; display: block; background: white; overflow: hidden">
+    </div>
+  </body>
+</html>
